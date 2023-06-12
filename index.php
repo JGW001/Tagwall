@@ -2,31 +2,26 @@
 <link rel="stylesheet" type="text/css" href="css/index.css">
 
 <script>
-function testSubmit()
+function trySubmit()
 {
     var x = document.forms["myForm"]["chatMsg"];
-    var y = document.forms["myForm"]["chatMsg2"];
     if (x.value === "")
     {
         alert(' ERROR: You have not written anything!');
         return false;
     } Blockquote
-    if(y.value === "")
-    {
-        alert(' ERROR: You have not written anything!');
-        return false;
-    }
     return true;
 }
 
 function submitForm()
 {
-    if (testSubmit())
+    if (trySubmit())
     {
         document.forms["myForm"].submit(); 
         document.forms["myForm"].reset(); 
     }
 } 
+
 </script>
 </head>
 
@@ -45,7 +40,7 @@ function submitForm()
     <iframe src="./content/button.php" name="frame_chatButton" height="0" width="0" style="border:none; "></iframe>
 	
 	<form action="./content/button.php" method="post" name="myForm" target="frame_chatButton" onsubmit="submitForm()">
-    <input type="text" name="chatMsg" minlength="4" value="Chat message.." ><br>
+    <input type="text" name="chatMsg" minlength="4" onfocus="this.value=''" onfocusout="this.value='Input message..'" value="Input message.." ><br>
 	</form>
 	</div>
   </div>
